@@ -193,7 +193,8 @@ nav {
 
 .bacheca,
 .offerta,
-.squadra {
+.squadra,
+.passaparola {
     padding: 64px 16px;
 }
 
@@ -334,6 +335,79 @@ h2 {
 }
 
 
+/* ---- CAROSELLO ---- */
+
+/* Niente padding ai lati, il carosello va da bordo a bordo */
+.passaparola {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Quello che esce non si vede */
+.giostra {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Le sfumature ai lati */
+.giostra::before,
+.giostra::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 60px;
+}
+
+.giostra::before {
+    left: 0;
+    background: linear-gradient(to right, #fafafa, transparent);
+}
+
+.giostra::after {
+    right: 0;
+    background: linear-gradient(to left, #fafafa, transparent);
+}
+
+/* Le recensioni in fila, largo quanto tutte le carte.
+   Scorre fino a metà e riparte */
+.nastro {
+    display: flex;
+    width: max-content;
+    padding: 8px 0;
+    animation: scorri 30s linear infinite;
+}
+
+/* Si ferma col mouse sopra */
+.giostra:hover .nastro {
+    animation-play-state: paused;
+}
+
+/* margin e non gap, così metà binario è un giro preciso */
+.parere {
+    width: 280px;
+    flex-shrink: 0;
+    margin-right: 24px;
+}
+
+.parere .iniziali {
+    font-size: 1.6rem;
+    font-weight: 400;
+    border: none;
+}
+
+.parere .frase {
+    margin-bottom: 16px;
+    font-style: italic;
+    opacity: 0.75;
+}
+
+.firma span {
+    opacity: 0.7;
+}
+
+
 /* ---- FOOTER ---- */
 
 /* La fascia nera */
@@ -434,6 +508,15 @@ body.notte .squadra {
     background-color: #1a1a1a;
 }
 
+/* Sfumature del carosello sul nero */
+body.notte .giostra::before {
+    background: linear-gradient(to right, #121212, transparent);
+}
+
+body.notte .giostra::after {
+    background: linear-gradient(to left, #121212, transparent);
+}
+
 /* Il footer diventa chiaro */
 body.notte #fondo {
     color: #1a1a1a;
@@ -469,6 +552,17 @@ body.notte #fondo {
     }
 }
 
+/* Il carosello va a sinistra di metà */
+@keyframes scorri {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
 
 /* --- MEDIA QUERY --- */
 
@@ -498,6 +592,17 @@ body.notte #fondo {
     .offerta,
     .squadra {
         padding: 80px 24px;
+    }
+
+    .passaparola {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+
+    /* Sfumature più larghe */
+    .giostra::before,
+    .giostra::after {
+        width: 120px;
     }
 
     /* Footer in riga: logo, social, copyright */
