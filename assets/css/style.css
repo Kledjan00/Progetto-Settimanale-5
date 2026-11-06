@@ -31,6 +31,18 @@ a {
     text-decoration: none;
 }
 
+/* Con "riduci movimento" attivo si spengono le animazioni */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
 
 /* --- HEADER --- */
 
@@ -466,6 +478,118 @@ h2 {
 }
 
 
+/* ---- MODALE ---- */
+
+/* Lo strato scuro, nascosto finché il JS non lo apre */
+.velo {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.6);
+    animation: dissolvenza 300ms ease-out;
+}
+
+/* La finestra bianca al centro, bianca anche in dark */
+.finestra {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 440px;
+    padding: 28px 24px 24px;
+    color: #1a1a1a;
+    background-color: white;
+    border-radius: 12px;
+    animation: sali 400ms ease-out;
+}
+
+.finestra h3 {
+    margin: 0 0 4px;
+    font-size: 1.3rem;
+    color: hsl(150, 60%, 30%);
+}
+
+.premessa {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* La X */
+.crocetta {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 1.2rem;
+    color: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+label {
+    display: block;
+    margin: 14px 0 6px;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+/* I campi. 16px così l'iPhone non fa zoom */
+input,
+select,
+textarea {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 16px;
+    color: inherit;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+}
+
+/* Il campo dove scrivi ha il bordo verde */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: hsl(150, 60%, 30%);
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Il bottone 'Invia richiesta' */
+.spedisci {
+    margin-top: 18px;
+    padding: 12px 24px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    background-color: hsl(150, 60%, 30%);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+/* Il grazie dopo l'invio, parte nascosto */
+.conferma {
+    display: none;
+    margin: 16px 0 0;
+    padding: 12px 16px;
+    font-weight: 700;
+    color: hsl(150, 60%, 30%);
+    background-color: hsl(150, 60%, 95%);
+    border-radius: 8px;
+}
+
+
 /* ---- DARK MODE ---- */
 
 /* .notte sul body la mette il JS */
@@ -560,6 +684,30 @@ body.notte #fondo {
 
     100% {
         transform: translateX(-50%);
+    }
+}
+
+/* L'overlay compare piano */
+@keyframes dissolvenza {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* La modale sale. translate(-50%, ...) la tiene centrata */
+@keyframes sali {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
     }
 }
 
