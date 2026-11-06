@@ -42,6 +42,7 @@ a {
     padding: 12px 16px;
     background-color: white;
     border-bottom: 1px solid #eee;
+    transition: padding 300ms ease, background-color 300ms ease, box-shadow 300ms ease;
 }
 
 /* Su telefono logo sopra e menu sotto */
@@ -59,10 +60,18 @@ a {
     font-size: 1.25rem;
     font-weight: 700;
     color: hsl(150, 60%, 30%);
+    transition: color 300ms ease;
 }
 
 .marchio i {
     margin-right: 4px;
+}
+
+/* Menu e tema in riga */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .voci {
@@ -84,6 +93,46 @@ a {
 
 .voci a:hover {
     background-color: hsl(150, 60%, 95%);
+    color: hsl(150, 60%, 30%);
+}
+
+/* Il bottone tondo del tema */
+.interruttore {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #eee;
+    border-radius: 50%;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* In light si vede solo la luna */
+.interruttore .fa-sun {
+    display: none;
+}
+
+/* .compatta la mette il JS: header verde, più bassa e con ombra */
+#testata.compatta {
+    padding: 6px 16px;
+    background-color: hsl(150, 60%, 30%);
+    border-bottom-color: hsl(150, 60%, 30%);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Sul verde tutto bianco */
+#testata.compatta .marchio,
+#testata.compatta .voci a,
+#testata.compatta .interruttore {
+    color: white;
+}
+
+#testata.compatta .interruttore {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* L'hover resta verde */
+#testata.compatta .voci a:hover {
     color: hsl(150, 60%, 30%);
 }
 
@@ -343,6 +392,55 @@ h2 {
 }
 
 
+/* ---- DARK MODE ---- */
+
+/* .notte sul body la mette il JS */
+body.notte {
+    color: #f0f0f0;
+    background-color: #121212;
+}
+
+/* Header nera prima dello scroll */
+body.notte #testata {
+    background-color: #1f1f1f;
+    border-bottom-color: #1f1f1f;
+}
+
+/* Dopo lo scroll resta verde */
+body.notte #testata.compatta {
+    background-color: hsl(150, 60%, 30%);
+    border-bottom-color: hsl(150, 60%, 30%);
+}
+
+body.notte .interruttore {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* In dark si vede solo il sole */
+body.notte .interruttore .fa-moon {
+    display: none;
+}
+
+body.notte .interruttore .fa-sun {
+    display: inline-block;
+}
+
+body.notte .carta {
+    background-color: #1f1f1f;
+    border-color: #1f1f1f;
+}
+
+body.notte .squadra {
+    background-color: #1a1a1a;
+}
+
+/* Il footer diventa chiaro */
+body.notte #fondo {
+    color: #1a1a1a;
+    background-color: #fafafa;
+}
+
+
 /* --- ANIMAZIONI --- */
 
 /* Il titolo sale e compare */
@@ -381,6 +479,10 @@ h2 {
     .testata-dentro {
         flex-direction: row;
         justify-content: space-between;
+    }
+
+    nav {
+        gap: 16px;
     }
 
     .voci {
