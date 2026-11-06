@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="380" viewBox="0 0 600 380" font-family="Helvetica Neue, Arial, sans-serif">
+  <!-- Quadrato scuro con l'icona della foto -->
+  <rect width="380" height="380" fill="#1f1f1f"/>
+  <g fill="none" stroke="#ffffff" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="95" y="122" width="191" height="139" rx="8"/>
+    <circle cx="183" cy="163" r="20"/>
+    <path d="M98 256 L150 203 Q159 194 168 203 L224 258"/>
+    <path d="M198 228 L244 186 Q253 178 262 186 L283 206"/>
+  </g>
+
+  <!-- Pannello bianco del post -->
+  <rect x="380" width="220" height="380" fill="#ffffff"/>
+
+  <circle cx="405" cy="26" r="13" fill="#4f81bd"/>
+  <text x="425" y="30" font-size="11" font-weight="700" fill="#262626">name</text>
+  <line x1="390" y1="52" x2="590" y2="52" stroke="#efefef" stroke-width="2"/>
+
+  <text x="390" y="74" font-size="11" fill="#262626"><tspan font-weight="700">name</tspan> Caption</text>
+  <text x="390" y="93" font-size="11" fill="#6a9fd4">#hashtag</text>
+
+  <line x1="390" y1="284" x2="590" y2="284" stroke="#efefef" stroke-width="2"/>
+
+  <g fill="none" stroke="#262626" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M397 307 L391.5 301.5 A3.3 3.3 0 0 1 397 296.8 A3.3 3.3 0 0 1 402.5 301.5 Z"/>
+    <path d="M414 307.5 A6 6 0 1 1 419.5 304 L420.5 308 Z"/>
+    <path d="M582 295 H591 V308 L586.5 304.5 L582 308 Z"/>
+  </g>
+
+  <text x="390" y="324" font-size="10" font-weight="700" fill="#262626">999 likes</text>
+  <text x="390" y="337" font-size="9" fill="#8e8e8e">date</text>
+
+  <line x1="390" y1="346" x2="590" y2="346" stroke="#efefef" stroke-width="2"/>
+
+  <text x="390" y="364" font-size="10" font-weight="700" fill="#262626">Add a comment...</text>
+  <text x="590" y="363" font-size="12" font-weight="700" fill="#262626" text-anchor="end">•••</text>
+</svg>
