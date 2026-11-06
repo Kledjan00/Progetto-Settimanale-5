@@ -142,7 +142,9 @@ a {
 
 /* ---- SEZIONI E CARTE ---- */
 
-.offerta {
+.bacheca,
+.offerta,
+.squadra {
     padding: 64px 16px;
 }
 
@@ -201,6 +203,21 @@ h2 {
 }
 
 
+/* ---- LAVORI ---- */
+
+/* Foto segnaposto al centro della carta */
+.scatto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 24px;
+}
+
+.scatto img {
+    width: 85%;
+}
+
+
 /* ---- SERVIZI ---- */
 
 /* Le icone verdi */
@@ -211,8 +228,60 @@ h2 {
 }
 
 /* Testo grigio: nero un po' trasparente */
-.offerta .carta p {
+.offerta .carta p,
+.squadra .carta p:last-child {
     opacity: 0.75;
+}
+
+/* Le carte entrano una dopo l'altra.
+   backwards così dopo l'hover funziona */
+.offerta .carta,
+.squadra .carta {
+    animation: comparsa 600ms ease-out backwards;
+}
+
+.offerta .carta:nth-child(2),
+.squadra .carta:nth-child(2) {
+    animation-delay: 150ms;
+}
+
+.offerta .carta:nth-child(3),
+.squadra .carta:nth-child(3) {
+    animation-delay: 300ms;
+}
+
+
+/* ---- TEAM ---- */
+
+/* Sfondo verdino */
+.squadra {
+    background-color: hsl(150, 60%, 97%);
+}
+
+/* Cerchio verde con le iniziali */
+.iniziali {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+    background-color: hsl(150, 60%, 30%);
+    border: 4px solid hsl(150, 60%, 95%);
+    border-radius: 50%;
+}
+
+/* Il ruolo sotto il nome */
+.carta .mestiere {
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: hsl(150, 60%, 30%);
 }
 
 
@@ -289,6 +358,19 @@ h2 {
     }
 }
 
+/* Le carte compaiono salendo un po' */
+@keyframes comparsa {
+    0% {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 /* --- MEDIA QUERY --- */
 
@@ -310,7 +392,9 @@ h2 {
     }
 
     /* Più spazio nelle sezioni */
-    .offerta {
+    .bacheca,
+    .offerta,
+    .squadra {
         padding: 80px 24px;
     }
 
